@@ -1,11 +1,14 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Button, ThemeProvider } from 'react-native-elements'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 const App = () => {
     return (
-        <View>
-            <Text>Hello</Text>
-        </View>
+        <SafeAreaProvider>
+            <ThemeProvider>
+                <Button title="Hey!" />
+            </ThemeProvider>
+        </SafeAreaProvider>
     )
 }
 
