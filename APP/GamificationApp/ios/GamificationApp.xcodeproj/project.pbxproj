@@ -30,6 +30,9 @@
 		4E4C88FCC558431A89F70E8E /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B211030A8314420BC2A9525 /* Octicons.ttf */; };
 		CFC68C5647044309BA8E9068 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 06C56F0668444FC090211C64 /* SimpleLineIcons.ttf */; };
 		91D4984DD4004669BE1665CF /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 980F5B1D5F21494A93CC9117 /* Zocial.ttf */; };
+		566215FAC9B145F0A0E16668 /* Monoton-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C44F4BE8A2514EB8A3A29634 /* Monoton-Regular.ttf */; };
+		1B2C8ADAEB9249B4B5509A5F /* Monoton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 873CA2080CC344A7ABB5A24E /* Monoton.ttf */; };
+		D90623D3E9754059A45B2DAB /* Monoton.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7BBF69F2E58A4FF0ACF490BE /* Monoton.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +79,9 @@
 		5B211030A8314420BC2A9525 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		06C56F0668444FC090211C64 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		980F5B1D5F21494A93CC9117 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C44F4BE8A2514EB8A3A29634 /* Monoton-Regular.ttf */ = {isa = PBXFileReference; name = "Monoton-Regular.ttf"; path = "../src/assets/fonts/Monoton/Monoton-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		873CA2080CC344A7ABB5A24E /* Monoton.ttf */ = {isa = PBXFileReference; name = "Monoton.ttf"; path = "../src/assets/fonts/Monoton/Monoton.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		7BBF69F2E58A4FF0ACF490BE /* Monoton.ttf */ = {isa = PBXFileReference; name = "Monoton.ttf"; path = "../src/assets/fonts/Monoton.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +207,9 @@
 				5B211030A8314420BC2A9525 /* Octicons.ttf */,
 				06C56F0668444FC090211C64 /* SimpleLineIcons.ttf */,
 				980F5B1D5F21494A93CC9117 /* Zocial.ttf */,
+				C44F4BE8A2514EB8A3A29634 /* Monoton-Regular.ttf */,
+				873CA2080CC344A7ABB5A24E /* Monoton.ttf */,
+				7BBF69F2E58A4FF0ACF490BE /* Monoton.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -318,6 +327,9 @@
 				4E4C88FCC558431A89F70E8E /* Octicons.ttf in Resources */,
 				CFC68C5647044309BA8E9068 /* SimpleLineIcons.ttf in Resources */,
 				91D4984DD4004669BE1665CF /* Zocial.ttf in Resources */,
+				566215FAC9B145F0A0E16668 /* Monoton-Regular.ttf in Resources */,
+				1B2C8ADAEB9249B4B5509A5F /* Monoton.ttf in Resources */,
+				D90623D3E9754059A45B2DAB /* Monoton.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
