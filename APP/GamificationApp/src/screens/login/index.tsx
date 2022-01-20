@@ -9,16 +9,13 @@ import ButtonStyle from '@styles/button'
 import MarginStyle from '@styles/margin'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
     const [username, setUsername] = useState('')
-
-    useEffect(() => {
-
-    }, []);
 
     const onConnectionPress = async () => {
         try {
             await AsyncStorage.setItem('@username', username)
+            navigation.navigate('HomeScreen')
         } catch (e) {
             console.log(e)
         }
