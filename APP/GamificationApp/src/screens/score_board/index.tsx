@@ -1,8 +1,9 @@
 import React from 'react'
-import { View, StyleSheet, Image, TouchableOpacity, SafeAreaView, FlatList } from 'react-native'
+import { View, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import { Images } from '@constants/index'
 import LeadScoreBoard from './leadscore'
 import BottomScoreBoard from './bottomscore'
+import SearchPlayerScoreBoard from './searchplayer'
 
 const ScoreBoardScreen = ({ navigation }) => {
     return (
@@ -17,6 +18,9 @@ const ScoreBoardScreen = ({ navigation }) => {
             </View>
             <View style={styles.viewBottom}> 
                 <BottomScoreBoard></BottomScoreBoard>
+            </View>
+            <View style={styles.viewSearch}> 
+                <SearchPlayerScoreBoard></SearchPlayerScoreBoard>
             </View>
         </View>
         
@@ -33,20 +37,17 @@ const styles = StyleSheet.create({
     },
     viewBottom:{
         backgroundColor: 'white',
-        borderTopLeftRadius: 30,
-        borderTopRightRadius: 30,
-        flex: 0.55
+        borderRadius: 30,
+        flex: 0.45
+    },
+    viewSearch:{
+        flex: 0.1
     },
     viewCross:{
         flex: 0.1,
         flexDirection: 'row',
         alignSelf: 'flex-end'
-    },
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'white',
-    },
+    }
 });
 
 export default ScoreBoardScreen
