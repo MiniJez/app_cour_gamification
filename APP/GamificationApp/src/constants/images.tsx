@@ -5,7 +5,8 @@ const Images = {
     podiumLeaderboard: require(`${IMAGE_URI}/podium.png`),
     crossRedLeaderboard: require(`${IMAGE_URI}/cross-red.png`),
     starsLeaderboard: require(`${IMAGE_URI}/stars.png`),
-    personLead: require(`${IMAGE_URI}/person.png`)
+    personLead: require(`${IMAGE_URI}/person.png`),
+    tempLeadImage: require(`${IMAGE_URI}/fire.jpg`)
 }
 
 export default Images
