@@ -12,9 +12,9 @@ const LeadScoreBoard = () => {
             </View>
             <View>
             <Image 
-                    source={Images.podiumLeaderboard}
-                    resizeMode='cover'
-                    style={styles.podiumImage}></Image>
+                source={Images.podiumLeaderboard}
+                resizeMode='cover'
+                style={styles.podiumImage}></Image>
             </View>
         </View>
     )
