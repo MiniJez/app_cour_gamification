@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Image, SafeAreaView, FlatList } from 'react-native'
-import { Images } from '@constants/index'
 import { Text } from 'react-native-elements'
-import TextStyle from '@styles/text'
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const BottomScoreBoard = ({players}) => {
     
     useEffect(() => {
-        console.log("players : ")
-        console.log(players)
     });
 
     const renderBoardList = ({ item }) => {
@@ -21,10 +16,10 @@ const BottomScoreBoard = ({players}) => {
                 <Image
                         style={styles.imageStyle}
                         resizeMode='cover'
-                        source={item.image}
+                        source={{uri:item.image}}
                     />
-                <Text style={styles.nameStyle}>{item.name}</Text>
-                <Text style={styles.scoreStyle}>{item.score}</Text>
+                <Text style={styles.nameStyle}>{item.prenom}</Text>
+                <Text style={styles.scoreStyle}>{item.total_points}</Text>
             </View>
         )
     }
@@ -57,8 +52,9 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     imageStyle: {
-        height: 30,
-        width: 30
+        height: 50,
+        width: 50,
+        borderRadius: 10
     },
     nameStyle: {
         fontWeight: 'bold',

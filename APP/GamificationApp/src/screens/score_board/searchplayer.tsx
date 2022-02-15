@@ -10,7 +10,8 @@ const SearchPlayerScoreBoard = ({setPlayers}) => {
   const handleKeyPress = async (event) => {
     try {
       var baseplayers = await AsyncStorage.getItem('@baseplayers').then(req => JSON.parse(req));
-      setPlayers(baseplayers.filter(x => x.name.startsWith(search)))
+      console.log(baseplayers)
+      setPlayers(baseplayers.filter(x => x.prenom.startsWith(search)))
     } catch (error) {
       console.log(error)
     }

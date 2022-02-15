@@ -5,6 +5,7 @@ import LeadScoreBoard from './leadscore'
 import BottomScoreBoard from './bottomscore'
 import SearchPlayerScoreBoard from './searchplayer'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AxiosCall } from '@services/axios_call'
 
 const players = [{ id: 1, position: 4, name: "Sky", score: 100, image: Images.personLead },
 { id: 2, position: 5, name: "Toto", score: 50, image: Images.personLead },
@@ -19,22 +20,31 @@ const players = [{ id: 1, position: 4, name: "Sky", score: 100, image: Images.pe
 { id: 11, position: 14, name: "Papa", score: 5, image: Images.personLead },
 { id: 12, position: 15, name: "Popo", score: 1, image: Images.personLead },
 ]
+var firstUpdate = true;
 
 const ScoreBoardScreen = ({ navigation }) => {
     const [dataSource, setDatasource] = useState<any>();
 
-    useEffect(() => {
-        const playersAsync = async () => {
-            try {
-                setDatasource(players);
-                await AsyncStorage.setItem('@baseplayers', JSON.stringify(players))
-            } catch (e) {
-                console.log(e)
-            }
-        };
+    const getAllPlayers = () => {
+        AxiosCall.getAllPlayers().then(async (res) => {
+            // console.log(res.data)
+            var count = 4;
+            res.data.forEach(element => {
+                console.log(element)
+                element.position = count;
+                count = count+1;
+            });
+            setDatasource(res.data);
+            await AsyncStorage.setItem('@baseplayers', JSON.stringify(res.data))
+        })
+    }
 
-        playersAsync();
-    }, []);
+    useEffect(() => {
+        if(firstUpdate){
+            getAllPlayers();
+            firstUpdate = false;
+        }
+    });
 
     const onGoBackPress = () => {
         navigation.navigate('HomeScreen')
