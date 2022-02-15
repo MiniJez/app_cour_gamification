@@ -11,7 +11,7 @@ const LeadScoreBoard = () => {
                         source={Images.tempLeadImage}
                         resizeMode='cover'
                         style={styles.images}></Image>
-                    <Text style={styles.names}>Dora</Text>
+                    <Text style={styles.names}>Sony</Text>
                     <Text style={styles.scores}>215</Text>
                 </View>
                 <View style={styles.firstPlayer}>
@@ -27,7 +27,7 @@ const LeadScoreBoard = () => {
                         source={Images.tempLeadImage}
                         resizeMode='cover'
                         style={styles.images}></Image>
-                    <Text style={styles.names}>Sony</Text>
+                    <Text style={styles.names}>Dora</Text>
                     <Text style={styles.scores}>148</Text>
                 </View>
             </View>

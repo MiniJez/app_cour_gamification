@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import {View, StyleSheet, TextInput} from 'react-native';
 import {Icon} from 'react-native-elements';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const SearchPlayerScoreBoard = () => {
+const SearchPlayerScoreBoard = ({setPlayers}) => {
   
   const [search, setSearch] = useState('');
 
-  const handleKeyPress = (event) => {
-    console.log(search)
+  const handleKeyPress = async (event) => {
+    try {
+      var baseplayers = await AsyncStorage.getItem('@baseplayers').then(req => JSON.parse(req));
+      setPlayers(baseplayers.filter(x => x.name.startsWith(search)))
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
