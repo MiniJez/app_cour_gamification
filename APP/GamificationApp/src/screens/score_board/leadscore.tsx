@@ -12,7 +12,7 @@ const LeadScoreBoard = () => {
                         resizeMode='cover'
                         style={styles.images}></Image>
                     <Text style={styles.names}>Sony</Text>
-                    <Text style={styles.scores}>215</Text>
+                    <Text style={styles.scores}>148</Text>
                 </View>
                 <View style={styles.firstPlayer}>
                     <Image 
@@ -28,7 +28,7 @@ const LeadScoreBoard = () => {
                         resizeMode='cover'
                         style={styles.images}></Image>
                     <Text style={styles.names}>Dora</Text>
-                    <Text style={styles.scores}>148</Text>
+                    <Text style={styles.scores}>250</Text>
                 </View>
             </View>
             <View style={{flex: 0.5, paddingBottom: 10}}>
