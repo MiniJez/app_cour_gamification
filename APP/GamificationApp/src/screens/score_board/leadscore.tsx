@@ -1,35 +1,48 @@
-import React from 'react'
-import { View, StyleSheet, ImageBackground, Image, Text } from 'react-native'
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Image, Text, FlatList } from 'react-native'
 import { Images } from '@constants/index'
+import { AxiosCall } from '@services/axios_call'
+
+var firstUpdate = true;
 
 const LeadScoreBoard = () => {
+
+    const [dataSource, setDatasource] = useState<any>();
+
+    const getBestPlayers = () => {
+        AxiosCall.getBestPlayers().then(async (res) => {
+            console.log(res.data)
+            setDatasource(res.data);
+        })
+    }
+
+    useEffect(() => {
+        if(firstUpdate){
+            getBestPlayers();
+            firstUpdate = false;
+        }
+    });
+
+    const renderTopList = ({ item }) => {
+        return (
+            <View style={styles.viewsEach} >
+                <Image 
+                    source={{uri:item.image}}
+                    resizeMode='cover'
+                    style={styles.images}></Image>
+                <Text style={styles.names}>{ item.prenom }</Text>
+                <Text style={styles.scores}>{ item.total_points }</Text>
+            </View>
+        )
+    }
+
     return (
         <View style={styles.viewLead}>
             <View style={styles.viewTop}>
-                <View style={styles.viewsEach}>
-                    <Image 
-                        source={Images.tempLeadImage}
-                        resizeMode='cover'
-                        style={styles.images}></Image>
-                    <Text style={styles.names}>Sony</Text>
-                    <Text style={styles.scores}>148</Text>
-                </View>
-                <View style={styles.firstPlayer}>
-                    <Image 
-                        source={Images.tempLeadImage}
-                        resizeMode='cover'
-                        style={styles.images}></Image>
-                    <Text style={styles.names}>Philou</Text>                    
-                    <Text style={styles.scores}>350</Text>
-                </View>
-                <View style={styles.viewsEach}>
-                    <Image 
-                        source={Images.tempLeadImage}
-                        resizeMode='cover'
-                        style={styles.images}></Image>
-                    <Text style={styles.names}>Dora</Text>
-                    <Text style={styles.scores}>250</Text>
-                </View>
+                <FlatList 
+                    data={dataSource}
+                    renderItem={renderTopList}
+                />
             </View>
             <View style={{flex: 0.5, paddingBottom: 10}}>
                 <Image 

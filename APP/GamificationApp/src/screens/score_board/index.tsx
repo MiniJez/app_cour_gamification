@@ -7,19 +7,6 @@ import SearchPlayerScoreBoard from './searchplayer'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AxiosCall } from '@services/axios_call'
 
-const players = [{ id: 1, position: 4, name: "Sky", score: 100, image: Images.personLead },
-{ id: 2, position: 5, name: "Toto", score: 50, image: Images.personLead },
-{ id: 3, position: 6, name: "Titi", score: 40, image: Images.personLead },
-{ id: 4, position: 7, name: "Tutu", score: 30, image: Images.personLead },
-{ id: 5, position: 8, name: "Tata", score: 20, image: Images.personLead },
-{ id: 6, position: 9, name: "Coco", score: 19, image: Images.personLead },
-{ id: 7, position: 10, name: "Momo", score: 15, image: Images.personLead },
-{ id: 8, position: 11, name: "Rara", score: 13, image: Images.personLead },
-{ id: 9, position: 12, name: "Vuvu", score: 10, image: Images.personLead },
-{ id: 10, position: 13, name: "Mémé", score: 9, image: Images.personLead },
-{ id: 11, position: 14, name: "Papa", score: 5, image: Images.personLead },
-{ id: 12, position: 15, name: "Popo", score: 1, image: Images.personLead },
-]
 var firstUpdate = true;
 
 const ScoreBoardScreen = ({ navigation }) => {
@@ -28,12 +15,15 @@ const ScoreBoardScreen = ({ navigation }) => {
     const getAllPlayers = () => {
         AxiosCall.getAllPlayers().then(async (res) => {
             // console.log(res.data)
-            var count = 4;
+            var count = 1;
             res.data.forEach(element => {
-                console.log(element)
+                // console.log(element)
                 element.position = count;
                 count = count+1;
             });
+            res.data.shift();
+            res.data.shift();
+            res.data.shift();
             setDatasource(res.data);
             await AsyncStorage.setItem('@baseplayers', JSON.stringify(res.data))
         })
