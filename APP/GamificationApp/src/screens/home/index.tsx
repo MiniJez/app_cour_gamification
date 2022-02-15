@@ -6,16 +6,10 @@ import LeadScoreBoard from '@screens/score_board/leadscore'
 import Images from '@constants/images'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
     const [players, setPlayers] = useState<Array<UserInterface>>()
-    const [currentPlayer, setCurrentPlayer] = useState<UserInterface>({
-        id: 0,
-        prenom: '',
-        nom: '',
-        image: '',
-        current_points: 0,
-        total_points: 0
-    })
+    const [currentPlayer, setCurrentPlayer] = useState<UserInterface>()
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         AxiosCall.getAllPlayers().then((res) => {
@@ -24,45 +18,58 @@ const HomeScreen = ({navigation}) => {
         })
     }, [])
 
+    useEffect(() => {
+        console.log('test', currentPlayer)
+        if (currentPlayer != undefined) {
+            setLoading(false)
+        }
+    }, [currentPlayer])
+
     const getCurrentPlayer = async (allPlayers: Array<UserInterface>) => {
         let currentPlayerName = await AsyncStorage.getItem('@username')
         let cplayer = allPlayers.filter((value) => value.prenom == `${currentPlayerName?.charAt(0).toUpperCase().trim()}${currentPlayerName?.slice(1)}`)[0]
+        console.log(allPlayers)
         setCurrentPlayer(cplayer)
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.imgContainer}>
-                <Image
-                    source={{
-                        uri: currentPlayer.image,
-                    }}
-                    style={styles.image}
-                    resizeMode='cover'
-                />
+        loading ?
+            <View>
+                <Text>Loading</Text>
             </View>
-            <View style={styles.content}>
-                <Text style={styles.name}>{currentPlayer?.prenom}</Text>
-                <View style={styles.imgContainerBadge}>
+            :
+            <View style={styles.container}>
+                <View style={styles.imgContainer}>
                     <Image
-                        source={currentPlayer.total_points < 300 ? Images.bronze : (currentPlayer.total_points < 500 ? Images.argent : Images.or)}
+                        source={{
+                            uri: currentPlayer?.image,
+                        }}
                         style={styles.image}
+                        resizeMode='cover'
                     />
                 </View>
+                <View style={styles.content}>
+                    <Text style={styles.name}>{currentPlayer?.prenom}</Text>
+                    <View style={styles.imgContainerBadge}>
+                        <Image
+                            source={currentPlayer?.total_points < 300 ? Images.bronze : (currentPlayer?.total_points < 500 ? Images.argent : Images.or)}
+                            style={styles.image}
+                        />
+                    </View>
+                </View>
+                <View style={styles.leaderBoardContainer}>
+                    <Button
+                        title={'Leader Board'}
+                        containerStyle={{
+                            width: 200,
+                            marginHorizontal: 50,
+                            marginBottom: 30
+                        }}
+                        onPress={() => navigation.navigate("ScoreBoardScreen")}
+                    />
+                    <LeadScoreBoard />
+                </View>
             </View>
-            <View style={styles.leaderBoardContainer}>
-                <Button
-                    title={'Leader Board'}
-                    containerStyle={{
-                        width: 200,
-                        marginHorizontal: 50,
-                        marginBottom: 30
-                    }}
-                    onPress={() => navigation.navigate("ScoreBoardScreen")}
-                />
-                <LeadScoreBoard />
-            </View>
-        </View>
     )
 }
 

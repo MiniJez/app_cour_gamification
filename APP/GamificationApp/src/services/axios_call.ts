@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URLS = "https://gamification-sarlin.herokuapp.com"
+const URLS = "http://172.20.10.2:8000"
 const USERS = "users"
 const BEST_PLAYERS = "best_players"
 const ALL_PLAYERS = "all_players"
@@ -14,7 +14,7 @@ export class AxiosCall {
                 'Content-Type': "application/json"
             }
         })
-
+        console.log(result)
         return result
     }
 
@@ -25,7 +25,7 @@ export class AxiosCall {
                 'Content-Type': "application/json"
             }
         })
-
+        
         return result
     }
 }

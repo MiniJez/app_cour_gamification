@@ -9,28 +9,24 @@ const LeadScoreBoard = () => {
 
     const [dataSource, setDatasource] = useState<any>();
 
-    const getBestPlayers = () => {
-        AxiosCall.getBestPlayers().then(async (res) => {
-            console.log(res.data)
-            setDatasource(res.data);
-        })
+    const getBestPlayers = async () => {
+        let res = await AxiosCall.getBestPlayers()
+        setDatasource(res.data)
     }
 
     useEffect(() => {
-        if(firstUpdate){
-            getBestPlayers();
-            firstUpdate = false;
-        }
-    });
+        getBestPlayers()
+    }, []);
 
     const renderTopList = ({ item }) => {
+        console.log('pipi', item)
         return (
             <View style={styles.viewsEach} >
                 <Image 
                     source={{uri:item.image}}
                     resizeMode='cover'
                     style={styles.images}></Image>
-                <Text style={styles.names}>{ item.prenom }</Text>
+                <Text style={styles.names}>Test</Text>
                 <Text style={styles.scores}>{ item.total_points }</Text>
             </View>
         )
@@ -40,6 +36,7 @@ const LeadScoreBoard = () => {
         <View style={styles.viewLead}>
             <View style={styles.viewTop}>
                 <FlatList 
+                    contentContainerStyle={{borderColor: 'blue', borderWidth: 1, flexDirection: 'row', justifyContent: "space-between", width: '100%'}}
                     data={dataSource}
                     renderItem={renderTopList}
                 />
@@ -67,13 +64,13 @@ const styles = StyleSheet.create({
     },
     viewTop:{
         flex: 0.5,
-        flexDirection: "row", 
-        alignItems: "flex-end", 
-        justifyContent: "space-between"
+        //alignItems: "flex-end", 
     },
     viewsEach:{
         width: '33%',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: 'red'
     },
     names:{
         fontWeight: 'bold',
