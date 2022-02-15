@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from '@screens/login';
@@ -13,7 +13,7 @@ const HomeStack = createNativeStackNavigator();
 const HomeNavigation = () => {
     return (
         <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-            {/* <HomeStack.Screen name="HomeScreen" component={HomeScreen} /> */}
+            <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
             <HomeStack.Screen name="ScoreBoardScreen" component={ScoreBoardScreen} />
         </HomeStack.Navigator>
     )

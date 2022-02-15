@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, SafeAreaView, View, Text, TextInput } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import { Colors, Images } from '@constants/index'
@@ -11,11 +11,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = ({ navigation }) => {
     const [username, setUsername] = useState('')
+    const [error, setError] = useState(false)
 
     const onConnectionPress = async () => {
         try {
-            await AsyncStorage.setItem('@username', username)
-            navigation.navigate('HomeScreen')
+            let user = username.toLowerCase().trim()
+            if(user == "philippe" || user == "lou" || user == "romain" || user == "edouard" || user == "marc-antoine" || user == "adrien") {
+                await AsyncStorage.setItem('@username', username)
+                navigation.navigate('HomeScreen')
+            } else {
+                setError(true)
+            }
         } catch (e) {
             console.log(e)
         }
@@ -32,12 +38,13 @@ const LoginScreen = ({ navigation }) => {
                     />
                 </View>
                 <View style={styles.inputUserNameContainer}>
-                    <Text style={TextStyle.title_medium}>Nom d'utilisateur</Text>
+                    <Text style={TextStyle.title_medium}>Nom d'utilisateur (prénom)</Text>
                     <TextInput
                         style={styles.textInput}
                         onChangeText={(u) => setUsername(u)}
                         value={username}
                     />
+                    {error ? <Text style={{color: 'white'}}>Aucun utilisateur de ce nom n'a été trouvé</Text> : null}
                 </View>
                 <View style={MarginStyle.marginTop20}>
                     <Button
