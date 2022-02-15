@@ -21,12 +21,12 @@ const players = [{ id: 1, position: 4, name: "Sky", score: 100, image: Images.pe
 ]
 
 const ScoreBoardScreen = ({ navigation }) => {
-    const [dataSource, setDatasource] = useState('');
+    const [dataSource, setDatasource] = useState<any>();
 
     useEffect(() => {
         const playersAsync = async () => {
             try {
-                setDatasource(JSON.stringify(players));
+                setDatasource(players);
                 await AsyncStorage.setItem('@baseplayers', JSON.stringify(players))
             } catch (e) {
                 console.log(e)
